@@ -1,0 +1,131 @@
+
+
+<html ng-app="IoT">	
+	
+	<head>
+		<meta charset="utf-8">
+		<title>Vườn Thanh Long</title>
+		<!-- Only required for desktop -->
+		<link rel="stylesheet" href="/dist/css/mobile-angular-ui-hover.min.css" />
+		<!-- Always required -->
+		<link rel="stylesheet" href="/dist/css/mobile-angular-ui-base.min.css" />
+		<!-- Only required for desktop -->
+		<link rel="stylesheet" href="/dist/css/mobile-angular-ui-desktop.min.css" />
+		<script src="/angular.min.js"></script>
+		<script src="/angular-route.min.js"></script>
+		<script src="/dist/js/mobile-angular-ui.min.js"></script>
+		<script src="/dist/socket.io.min.js"></script>
+		<script src="/socket.min.js"></script>
+		<script src="/webapp.js"></script>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+		</head>
+
+	<body ng-controller="Home">	
+		<div class="scrollable">
+			<div class="scrollable-content">
+				<div class="list-group text-center">
+
+
+		 <!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->			
+					<!-- #########################cục giới thiệu -->
+					<div class="list-group-item list-group-item-warning">
+						<h1><b><span style="color: red">ỨNG dụng Internet kết nối nâng cao hiệu quả canh tác cây</span><span style="color: green"> THANH LONG</span></b></h1>
+						<img src="http://camnangcaytrong.com/Uploads/UserFiles/images/Hoa%2C%20qua%20Thanh%20Long.jpg" width="450px" height="180px"><img src="http://voh.com.vn/uploads/Image/2017/06/27/cay-thanh-long-270617.jpg" width="450px" height="180px">
+					</div>
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->	
+
+					<!-- ####################Cục nhiệt độ độ ẩm -->
+					<div class="list-group-item list-group-item-home">
+						<div>
+							<h3 class="home-heading"><span style="color: purple">NHIỆT ĐỘ</span><span style="color: orange"> và</span><span style="color: purple"> ĐỘ ẨM</span> <span style="color: orange">tại vườn</span></h3>
+							<h4 class="home-heading">Nhiệt độ lúc này là:</h4>
+							<span style="color: brown"><b>{{nhietdo}}</b>__(độ C)</span>
+							<h4 class="home-heading">Độ ẩm lúc này là:</h4>
+							<span style="color: brown"><b>{{doam}}</b>__(%)</span>
+						</div>
+					</div>
+
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->	
+					<!-- #####################Cục cập nhập giá trị cảm biến -->
+					<div class="list-group-item list-group-item-warning">
+						<div>
+							<h3 class="home-heading"><span style="color: blue">CẬP NHẬT HỆ THỐNG</span></h3>
+							<button class="btn btn-warning" ng-click="cncb()">Cập nhật các cảm biến</button><button class="btn btn-dark" ng-click="cntb()">Cập nhật trạng thái on/off</button>
+						</div>
+					</div>
+
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->			
+					<div class="list-group-item list-group-item-warning">
+						<!-- ####################Cục thay đổi trạng thái relay 1 -->
+						<div>
+							<h3 class="home-heading"><span style="color: brown">ĐIỀU KHIỂN THIẾT BỊ 1</span></h3>
+							<img src="http://www.clker.com/cliparts/4/4/5/3/1308930172593232192500px-crystal_clear_app_ktip.svg-hi.png" width="50px" height="50px">
+							<button class="btn btn-success" ng-click="dongrelay1()">Bật</button><button class="btn btn-danger" ng-click="ngatrelay1()">Tắt</button>
+						</div>
+						<b><span style="color: green">{{trangthairelay1}}</span></b>
+
+
+
+						<!--####################### Cục thay đổi trạng thái relay 2 -->
+						<div>
+							<h3 class="home-heading"><span style="color: brown">ĐIỀU KHIỂN THIẾT BỊ 2</span></h3>
+							<img src="http://www.clker.com/cliparts/4/4/5/3/1308930172593232192500px-crystal_clear_app_ktip.svg-hi.png" width="50px" height="50px">					
+							<button class="btn btn-success" ng-click="dongrelay2()">Bật</button><button class="btn btn-danger" ng-click="ngatrelay2()">Tắt</button>
+						</div>
+						<b><span style="color: green">{{trangthairelay2}}</span></b>
+
+
+
+						<!-- ####################Cục thay đổi trạng thái relay 3 -->
+						<div>
+							<h3 class="home-heading"><span style="color: brown">ĐIỀU KHIỂN THIẾT BỊ 3</span></h3>
+							<img src="http://www.clker.com/cliparts/4/4/5/3/1308930172593232192500px-crystal_clear_app_ktip.svg-hi.png" width="50px" height="50px">
+							<button class="btn btn-success" ng-click="dongrelay3()">Bật</button><button class="btn btn-danger" ng-click="ngatrelay3()">Tắt</button>
+						</div>
+						<b><span style="color: green">{{trangthairelay3}}</span></b>
+
+
+
+						<!--####################### Cục thay đổi trạng thái relay 4 -->
+						<div>
+							<h3 class="home-heading"><span style="color: brown">ĐIỀU KHIỂN THIẾT BỊ 4</span></h3>
+							<img src="http://www.clker.com/cliparts/4/4/5/3/1308930172593232192500px-crystal_clear_app_ktip.svg-hi.png" width="50px" height="50px">					
+							<button class="btn btn-success" ng-click="dongrelay4()">Bật</button><button class="btn btn-danger" ng-click="ngatrelay4()">Tắt</button>
+						</div>
+						<b><span style="color: green">{{trangthairelay4}}</span></b>
+
+
+
+						<!--####################### Cục thay đổi trạng thái 4 relay-->
+						<div>
+							<h3 class="home-heading"><span style="color: navy">ĐIỀU KHIỂN ĐỒNG THỜI 4 THIẾT BỊ</span></h3>
+							<button class="btn btn-success" ng-click="dong4relay()">Bật tất cả thiết bị</button><button class="btn btn-danger" ng-click="ngat4relay()">Tắt tất cả thiết bị</button>
+						</div>
+						<b><span style="color: green">{{trangthai4relay}}</span></b>
+					</div>
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->				
+				</div>
+
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->	
+				<!-- #################### giới thiệu-->	
+				<div class="list-group-item list-group-item-info">
+					<html>
+					<b><h3><span style="color: black">Phạm Văn Thêm</span></h3></b>
+					<h4><span style="color: black">Liên hệ: </span><span style="color: olive">01679722988</span></h4>
+					<h4><span style="color: black">Email:	</span><span style="color: olive">hoangdagm@gmail.com</span></h4>
+					<h4><span style="color: black">Student: </span><span style="color: olive">15151219@student.hcmute.edu.vn</span></h4>
+					<h4><a href="https://www.facebook.com/phamthem.business.technology">Ghé thăm facebook tại đây</a></h4>
+					<b><h3><span style="color: red">___________________</span></h3></b>	
+					<h4><span style="color:olive">Sinh viên tại Đại Học Sư Phạm Kỹ Thuật TP.HCM</span></h4>
+					<h4><span style="color:olive">Chuyên ngành: Công nghệ Kỹ thuật ĐIỀU KHIỂN và TỰ ĐỘNG HÓA</span></h4>
+					<h4><span style="color:olive">Đề tài nghiên cứu phát triển các giải pháp điều khiển thông minh ứng dụng phát triển nông nghiệp công nghệ cao</span></h4>			
+					</html>
+				</div>
+
+		<!-- 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000 -->		
+
+			</div>
+		</div>
+	</body>
+</html>
+
