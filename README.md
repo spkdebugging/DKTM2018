@@ -1,4 +1,5 @@
 # Giới thiệu
 
 Chương trình dùng để tạo một socketSer
-https://www.facebook.com/phamthem.business.technology
+https://www.facebook.com/breakingbadman
+Liên hệ : Thien Dinh
